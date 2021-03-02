@@ -21,4 +21,6 @@ html:
 
 add SECRETARY to roles.mysql script
 
-everything else
+everything else:
+
+ evt add h2 support?
