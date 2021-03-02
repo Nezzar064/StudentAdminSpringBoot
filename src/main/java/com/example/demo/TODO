@@ -1,0 +1,24 @@
+//Format: TODO + PRIORITY/NUMBER
+
+Maybe add a forgot password function or something??
+
+
+IMPORT STUFF INTO SPRING BOOT
+START FROM CLONING LOGIN TEMPLATE
+- figure out to redirect to admin menu if admin
+- otherwise redirect to secretary menu
+- passwords are already encrypted
+-
+
+StudentService:
+- remember IDCHECKER for DELETING A STUDENT!!
+
+StudentController
+- endpoints must be studentadministration/ENDPOINT HERE
+
+html:
+- design home, adminfeatures (maybe in navbar), listfunctions,
+
+add SECRETARY to roles.mysql script
+
+everything else
