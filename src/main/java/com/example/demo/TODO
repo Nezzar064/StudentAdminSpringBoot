@@ -12,15 +12,41 @@ START FROM CLONING LOGIN TEMPLATE
 
 StudentService:
 - remember IDCHECKER for DELETING A STUDENT!!
+    - or use spring studentRepository? idk use the idchecker i guess
+- put stuff from studentadmin/studentservice.java here
 
 StudentController
 - endpoints must be studentadministration/ENDPOINT HERE
+- import stuff from studentoutput etc, otherwise put it in studentservice or make
+    a studentoutput class as well...
 
 html:
-- design home, adminfeatures (maybe in navbar), listfunctions,
+- Home.html
+- Registration.html
+- Login.html
+- navbar styling?
+    - add each page to its corresponding menu:
+        - Administration
+        - Viewer
+        - Changer
+        - Admin
+            - delete users, add users, show users
+- admin/home.html
+- addStudent.html
+- deleteStudent.html
+- one html for each studentOutput, put in its own folder
+- do all the annoying CSS work
+- remember to change page titles so they correspond to what page you are on
+- maybe add fragment for head with viewport, navbar.css and container-row.css?
 
 add SECRETARY to roles.mysql script
 
+admin stuff:
+ - EVERYTHING ADMIN RELATED MUST BE PUT IN ADMIN FOLDER BECAUSE OF PRIVILEGES
+ - implement saveAdminUser
+    - change ADMIN to USER in saveUser AFTER redoing sql script to have USER as well.
+ - Could try to hide admin menu if user isnt admin, if following link doesnt work, then research:
+    https://stackoverflow.com/questions/42409310/how-to-make-menu-tab-invisible-if-the-user-is-not-admin
 everything else:
 
  evt add h2 support?

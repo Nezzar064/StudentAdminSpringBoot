@@ -11,8 +11,8 @@
     <groupId>com.example</groupId>
     <artifactId>demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>demo</name>
-    <description>Demo Project for Student Administration</description>
+    <name>studentAdminSpringBoot</name>
+    <description>Student Administration Spring Boot Version</description>
     <properties>
         <java.version>11</java.version>
     </properties>
@@ -69,6 +69,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.4.3</version>
             </plugin>
         </plugins>
     </build>

@@ -1,0 +1,64 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="js/navbar.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/navbar.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/container-row.css}"/>
+    <title>OCAFE</title>
+
+</head>
+<body>
+<header id="header">
+    <section class="top-nav-bar">
+        <div th:replace="fragments/navbar.html :: menu"></div>
+    </section>
+</header>
+<section class="container-row" id="home">
+    <div class="container">
+        <br>
+        <h1 class="title">Home</h1>
+        <div class="columns is-mobile">
+            <div class="column">
+                <br>
+                <br>
+                <p>Welcome to my portfolio, designed and programmed by myself.</p>
+                <br>
+                <p>Feel free to take a look around, either just scrolling down
+                    or using the top right navigation menu.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="container-row" id="about">
+    <div class="container">
+        <br>
+        <h2 class="title">About me</h2>
+        <div class="columns is-mobile">
+            <div class="column">
+            </div>
+            <div class="column">
+            </div>
+            <div class="column">
+            </div>
+        </div>
+    </div>
+</section>
+<footer>
+    <section class="container-row" id="contact">
+        <div class="container">
+            <br>
+            <h6 class="title">Contact me</h6>
+            <div class="columns is-mobile">
+                <div class="column">
+                </div>
+            </div>
+        </div>
+    </section>
+</footer>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</body>
+</html>
