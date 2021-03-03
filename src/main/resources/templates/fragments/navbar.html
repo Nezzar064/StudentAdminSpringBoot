@@ -1,175 +1,132 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/navbar.css}"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
-    <link rel="stylesheet" href="../../static/css/navbar.css">
-    <title>OCAFE</title>
-</head>
+    <script type="text/javascript" th:src="@{/js/navbar.js}"></script>
 <body>
-<header>
-    <div th:fragment="menu">
-    <div class="container">
-        <nav class="navbar">
-            <div class="navbar-brand">
-                <a href="#" class="logo">OCAFE</a>
-                <div class="navbar-burger burger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
+<nav th:fragment="menu">
+    <nav class="navbar is-transparent">
+        <div class="navbar-brand">
+            <a href="#" class="logo">OCAFE</a>
+            <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
+        </div>
 
-            <div class="navbar-menu">
-                <div class="navbar-start">
-                    <a class="navbar-item" href="studentAdministration/home">
-                        Home
+        <div id="navbarExampleTransparentExample" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="https://bulma.io/">
+                    Home
+                </a>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link" href="#">
+                        Menu 1
                     </a>
-                    <div class="navbar-item has-dropdown is-hoverable">
-                        <a class="navbar-link" href="#">
-                            Menu 1
+                    <div class="navbar-dropdown is-boxed">
+                        <a class="navbar-item" href="#">
+                            Submenu 1
                         </a>
-                        <div class="navbar-dropdown is-hidden-mobile is-boxed">
-                            <a class="navbar-item" href="#">
-                                Submenu 1
-                            </a>
-                            <a class="navbar-item" href="#">
-                                Submenu 2
-                            </a>
-                            <a class="navbar-item" href="#">
-                                Submenu 3
-                            </a>
-                            <a class="navbar-item" href="#">
-                                Submenu 4
-                            </a>
-                            <a class="navbar-item" href="#">
-                                Submenu 5
-                            </a>
-                            <a class="navbar-item" href="#">
-                                Submenu 6
-                            </a>
-                            <a class="navbar-item" href="#">
-                                Submenu 7
-                            </a>
-                            <a class="navbar-item" href="#">
-                                Submenu 8
-                            </a>
-                            <a class="navbar-item" href="#">
-                                Submenu 9
-                            </a>
-                            <a class="navbar-item" href="#">
-                                Submenu 10
-                            </a>
-                        </div>
+                        <a class="navbar-item" href="#">
+                            Submenu 2
+                        </a>
+                        <a class="navbar-item" href="#">
+                            Submenu 3
+                        </a>
+                        <a class="navbar-item" href="#">
+                            Submenu 4
+                        </a>
+                        <a class="navbar-item" href="#">
+                            Submenu 5
+                        </a>
                     </div>
 
-                    <div class="navbar-item has-dropdown is-hoverable">
-                        <a class="navbar-link" href="#">
-                            Menu 2
+                </div>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link" href="#">
+                        Menu 2
+                    </a>
+                    <div class="navbar-dropdown is-boxed">
+                        <a class="navbar-item" href="#">
+                            Submenu 1
                         </a>
-                        <div class="navbar-dropdown is-hidden-mobile is-boxed">
-                            <a class="navbar-item" href="#">
-                                Submenu 1
-                            </a>
-                            <a class="navbar-item" href="#">
-                                Submenu 2
-                            </a>
-                            <a class="navbar-item" href="#">
-                                Submenu 3
-                            </a>
-                            <a class="navbar-item" href="#">
-                                Submenu 4
-                            </a>
-                            <a class="navbar-item" href="#">
-                                Submenu 5
-                            </a>
-                            <a class="navbar-item" href="#">
-                                Submenu 6
-                            </a>
-                            <a class="navbar-item" href="#">
-                                Submenu 7
-                            </a>
-                            <a class="navbar-item" href="#">
-                                Submenu 8
-                            </a>
-                            <a class="navbar-item" href="#">
-                                Submenu 9
-                            </a>
-                            <a class="navbar-item" href="#">
-                                Submenu 10
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="navbar-item has-dropdown is-hoverable">
-                        <a class="navbar-link" href="#">
-                            Menu 3
+                        <a class="navbar-item" href="#">
+                            Submenu 2
                         </a>
-                        <div class="navbar-dropdown is-hidden-mobile is-boxed">
-                            <a class="navbar-item" href="#">
-                                Submenu 1
-                            </a>
-                            <a class="navbar-item" href="#">
-                                Submenu 2
-                            </a>
-                            <a class="navbar-item" href="#">
-                                Submenu 3
-                            </a>
-                            <a class="navbar-item" href="#">
-                                Submenu 4
-                            </a>
-                            <a class="navbar-item" href="#">
-                                Submenu 5
-                            </a>
-                            <a class="navbar-item" href="#">
-                                Submenu 6
-                            </a>
-                            <a class="navbar-item" href="#">
-                                Submenu 7
-                            </a>
-                            <a class="navbar-item" href="#">
-                                Submenu 8
-                            </a>
-                            <a class="navbar-item" href="#">
-                                Submenu 9
-                            </a>
-                            <a class="navbar-item" href="#">
-                                Submenu 10
-                            </a>
-                        </div>
+                        <a class="navbar-item" href="#">
+                            Submenu 3
+                        </a>
+                        <a class="navbar-item" href="#">
+                            Submenu 4
+                        </a>
+                        <a class="navbar-item" href="#">
+                            Submenu 5
+                        </a>
                     </div>
                 </div>
 
-                <div class="navbar-end">
-                    <div class="navbar-item">
-                        <div class="field is-grouped">
-                            <p class="control">
-                                <a class="button is-primary" href="/login">
-                                    <span>Logout</span>
-                                </a>
-                            </p>
-                        </div>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link" href="#">
+                        Menu 2
+                    </a>
+                    <div class="navbar-dropdown is-boxed">
+                        <a class="navbar-item" href="#">
+                            Submenu 1
+                        </a>
+                        <a class="navbar-item" href="#">
+                            Submenu 2
+                        </a>
+                        <a class="navbar-item" href="#">
+                            Submenu 3
+                        </a>
+                        <a class="navbar-item" href="#">
+                            Submenu 4
+                        </a>
+                        <a class="navbar-item" href="#">
+                            Submenu 5
+                        </a>
+                    </div>
+                </div>
+
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link" href="#">
+                        Menu 3
+                    </a>
+                    <div class="navbar-dropdown is-boxed">
+                        <a class="navbar-item" href="#">
+                            Submenu 1
+                        </a>
+                        <a class="navbar-item" href="#">
+                            Submenu 2
+                        </a>
+                        <a class="navbar-item" href="#">
+                            Submenu 3
+                        </a>
+                        <a class="navbar-item" href="#">
+                            Submenu 4
+                        </a>
+                        <a class="navbar-item" href="#">
+                            Submenu 5
+                        </a>
                     </div>
                 </div>
             </div>
-        </nav>
-        </div>
-    </div>
-</header>
-<section class="container-row" id="home">
-    <div class="container">
-        <br>
-        <h1 class="title">Home</h1>
-        <div class="columns is-mobile">
-            <div class="column">
-                <br>
-                <br>
-                <p>Welcome to my portfolio, designed and programmed by myself.</p>
-                <br>
-                <p>Feel free to take a look around, either just scrolling down
-                    or using the top right navigation menu.</p>
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="field is-grouped">
+                        <p class="control">
+                            <a class="button is-warning" href="/logout">
+                                <span>Logout</span>
+                            </a>
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </nav>
+</nav>
 </body>
 </html>

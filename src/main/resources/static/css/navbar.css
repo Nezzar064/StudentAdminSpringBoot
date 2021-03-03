@@ -1,17 +1,26 @@
+body{
+    margin: 0;
+}
 .logo {
     font-weight: 700;
     font-size: 34px;
+    padding-left: 50px;
+    padding-right: 10px;
     color: black;
     text-decoration: none;
 }
-
-#header{
-    padding: 15px;
-    position: fixed;
+.navbar{
+    height: 20px;
+    z-index:500; //any higher integer value
+    position: absolute;
     width: 100%;
-    left: 0;
     top: 0;
-    z-index: 1000;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
 }
+
+.logout-button{
+    padding-right: 30px;
+}
+
 
 

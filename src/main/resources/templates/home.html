@@ -2,62 +2,57 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript" src="js/navbar.js"></script>
-
+    <script type="text/javascript" th:src="@{/js/navbar.js}"></script>
+    <script type="text/javascript" th:src="@{/js/goToTopButton.js}"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <link rel="stylesheet" type="text/css" th:href="@{/css/navbar.css}"/>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/css/container-row.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}"/>
     <title>OCAFE</title>
 
 </head>
 <body>
 <header id="header">
-    <section class="top-nav-bar">
-        <div th:replace="fragments/navbar.html :: menu"></div>
-    </section>
+    <div th:replace="fragments/navbar.html :: menu"></div>
 </header>
-<section class="container-row" id="home">
+<section class="container-row " id="home">
+    <div class="content">
     <div class="container">
-        <br>
-        <h1 class="title">Home</h1>
+        <h1 class="title">
+            <strong>
+                Home
+            </strong>
+        </h1>
+        <h2 class="is-size-5">
+            <strong>
+                <span th:utext="${homeUserName}"></span>
+            </strong>
+        </h2>
         <div class="columns is-mobile">
             <div class="column">
+                <p>Welcome to OCAFE, Student Administration System</p>
                 <br>
-                <br>
-                <p>Welcome to my portfolio, designed and programmed by myself.</p>
-                <br>
-                <p>Feel free to take a look around, either just scrolling down
-                    or using the top right navigation menu.</p>
             </div>
+        </div>
+            <div class="column">
+                <p>The system has the following options available: </p>
+                <ul>
+                    <li>Administration</li>
+                    <li>Update Students</li>
+                    <li>View Student Info</li>
+                    <li>Admin Menu(must have access)</li>
+                </ul>
+                <br>
+        </div>
+            <div class="column">
+                <h3 class="is-size-4"></h3>
+                <p>For troubleshooting, user problems etc. please contact administrator</p>
+                <br>
         </div>
     </div>
-</section>
-<section class="container-row" id="about">
-    <div class="container">
-        <br>
-        <h2 class="title">About me</h2>
-        <div class="columns is-mobile">
-            <div class="column">
-            </div>
-            <div class="column">
-            </div>
-            <div class="column">
-            </div>
-        </div>
     </div>
 </section>
-<footer>
-    <section class="container-row" id="contact">
-        <div class="container">
-            <br>
-            <h6 class="title">Contact me</h6>
-            <div class="columns is-mobile">
-                <div class="column">
-                </div>
-            </div>
-        </div>
-    </section>
+<footer class="footer" th:insert="fragments/footer :: footer">
 </footer>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>

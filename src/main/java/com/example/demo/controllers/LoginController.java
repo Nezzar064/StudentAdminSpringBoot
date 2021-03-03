@@ -27,11 +27,6 @@ public class LoginController {
         return modelAndView;
     }
 
-    @GetMapping(value = "/homeTest")
-    public String hello(){
-        return "home";
-    }
-
     @RequestMapping(value="/registration", method = RequestMethod.GET)
     public ModelAndView registration(){
         ModelAndView modelAndView = new ModelAndView();
@@ -67,9 +62,18 @@ public class LoginController {
         ModelAndView modelAndView = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByUsername(auth.getName());
-        modelAndView.addObject("userName", "Welcome " + user.getUsername() + "/" + user.getName() + " " + user.getLastName());
+        modelAndView.addObject("userName", "Greetings " + user.getUsername() + "/" + user.getName() + " " + user.getLastName());
         modelAndView.addObject("adminMessage","Content Available Only for Users with Admin Role");
         modelAndView.setViewName("admin/home");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/home", method = RequestMethod.GET)
+    public ModelAndView userHome() {
+        ModelAndView modelAndView = new ModelAndView();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByUsername(auth.getName());
+        modelAndView.addObject("homeUserName", "Greetings " + user.getUsername() + "/" + user.getName() + " " + user.getLastName());
         return modelAndView;
     }
 
