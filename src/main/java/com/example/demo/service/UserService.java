@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.Optional;
 
 @Service
 public class UserService {
@@ -27,10 +26,6 @@ public class UserService {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
-    public User findUserByEmail(long id) {
-        return userRepository.findById(id);
-    }
-
     public User findUserByUsername(String userName){
         return userRepository.findByUsername(userName);
     }
@@ -38,7 +33,7 @@ public class UserService {
     public User saveUser(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setActive(true);
-        Role userRole = roleRepository.findByRole("ADMIN");
+        Role userRole = roleRepository.findByRole("USER");
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
         return userRepository.save(user);
     }
@@ -48,6 +43,13 @@ public class UserService {
         user.setActive(true);
         Role userRole = roleRepository.findByRole("ADMIN");
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
+        return userRepository.save(user);
+    }
+
+    public User updateActiveStatus(String username) {
+        User user = userRepository.findByUsername(username);
+        //idk maybe requestparam or something?
+        user.setActive(false);
         return userRepository.save(user);
     }
 }

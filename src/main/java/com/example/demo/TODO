@@ -2,6 +2,12 @@
 
 Maybe add a forgot password function or something??
 
+USERS:
+normaluser
+normaluser
+
+admin
+admin
 
 IMPORT STUFF INTO SPRING BOOT
 START FROM CLONING LOGIN TEMPLATE
@@ -23,41 +29,53 @@ StudentController
 
 html:
 - Home.html
+- admin/home.html / is done
 - Registration.html
-- Login.html
+- Login.html / is done
 - navbar styling?
     - add each page to its corresponding menu:
         - Administration
         - Viewer
         - Changer
         - Admin
-            - delete users, add users, show users
-- admin/home.html
-- addStudent.html
+            - delete users / is done, add users / is done, show users
+- addStudent.html https://bulma.io/documentation/form/input/
 - deleteStudent.html
-- one html for each studentOutput, put in its own folder
+- one html for each studentOutput, put in its own folder, contains tables for each
 - do all the annoying CSS work
 - remember to change page titles so they correspond to what page you are on
-- maybe add fragment for head with viewport, navbar.css and container-row.css?
-- 404 error page, error.html
+- maybe add fragment for head with viewport, navbar.css and container-row.css? / is done
+- 404 error page, error.html / is done
 - Navbar is collapsed on mobile, fix
 - Navbar doesnt scroll with page, fix
+- table here one/two is pretty nice: https://bulma.io/documentation/elements/content/
+- for help see bulma documentation
 
 https://bulma.io/documentation/form/general/
 
 Spring security:
-- figure out how to implement that logout actually works...
+- redirect user to admin page if admin, else to user page
 
-add USER to roles.mysql script
+add USER to roles.mysql script / is done
 
 admin stuff:
  - EVERYTHING ADMIN RELATED MUST BE PUT IN ADMIN FOLDER BECAUSE OF PRIVILEGES
- - implement saveAdminUser
+ - implement saveAdminUser / is done
     - change ADMIN to USER in saveUser AFTER redoing sql script to have USER as well.
  - Could try to hide admin menu if user isnt admin, if following link doesnt work, then research:
     https://stackoverflow.com/questions/42409310/how-to-make-menu-tab-invisible-if-the-user-is-not-admin
  - CHANGE ACTIVE STATUS FOR USER
 
+
 everything else:
  evt contact me m. messagesystem, som blir gemt i databasen og kan vises i webapp i sin egen menu?
  evt add h2 support?
+
+ ENDPOINTS:
+ admin:
+ /admin/registration
+ /admin/userRegistration
+/admin/home
+
+/home
+/login

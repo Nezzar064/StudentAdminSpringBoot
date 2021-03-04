@@ -1,13 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Registration Form</title>
+<head th:insert="fragments/head :: head">
+    <title>User Registration</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/registration.css}"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.css">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/navbar.css}"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 <form th:action="@{/}" method="get">
@@ -17,7 +13,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <form autocomplete="off" action="#" th:action="@{/registration}"
+            <form autocomplete="off" action="#" th:action="@{/admin/userRegistration}"
                   th:object="${user}" method="post" class="form-horizontal"
                   role="form">
                 <h2>Registration Form</h2>
