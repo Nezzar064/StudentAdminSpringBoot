@@ -22,7 +22,7 @@ public class Student implements Serializable {
 
     @Column(name = "birthdate")
     @NotEmpty(message = "*Please enter the students birthdate!")
-    private LocalDate birthDate;
+    private String birthDate;
 
     @Column(name = "address")
     @NotEmpty(message = "*Please enter the students address!")
@@ -47,6 +47,14 @@ public class Student implements Serializable {
                 ;
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
@@ -55,11 +63,11 @@ public class Student implements Serializable {
         this.name = name;
     }
 
-    public LocalDate getBirthDate() {
+    public String getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(LocalDate birthDate) {
+    public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
     }
 

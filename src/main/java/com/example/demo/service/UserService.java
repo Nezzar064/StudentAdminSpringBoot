@@ -52,4 +52,8 @@ public class UserService {
         user.setActive(false);
         return userRepository.save(user);
     }
+
+    public User deleteUser(User user) {
+        return user;
+    }
 }

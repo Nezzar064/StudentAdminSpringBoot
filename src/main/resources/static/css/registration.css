@@ -3,3 +3,25 @@
     font-size: 12px;
     color: #FF1C19;
 }
+
+#name, #lastName, #username, #password{
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+    border-color: black;
+}
+.input {
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+    border-color: black;
+}
+
+input[type="text"]::placeholder {
+    color: #585858;
+}
+
+input[type="password"]::placeholder {
+    color: #585858;
+}
+
+input[type="user_name"]::placeholder {
+    color: #585858;
+}
+

@@ -7,8 +7,8 @@
     max-width: 420px;
     padding: 30px 38px 66px;
     margin: 0 auto;
-    background-color: #eee;
-    border: 3px dotted rgba(0,0,0,0.1);
+    background-color: black;
+    border: 3px dotted rgba(0,0,0,0.4);
 }
 
 .form-signin-heading {
@@ -21,16 +21,4 @@
     font-size: 16px;
     height: auto;
     padding: 10px;
-}
-
-input[type="text"] {
-    margin-bottom: 0px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-}
-
-input[type="password"] {
-    margin-bottom: 20px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
 }

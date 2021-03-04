@@ -18,18 +18,18 @@
                 <form th:action="@{/login}" method="POST" class="form-signin">
                     <h3 class="title is-3">Welcome to OCAFE</h3>
                     <br>
-                    <label for="user_name"></label>
-                    <input type="text" id="user_name" name="user_name" placeholder="Username"
+                    <label for="username"></label>
+                    <input style="width: 300px" type="text" id="username" name="user_name" placeholder="Username"
                            class="input is-primary is-medium"/>
                     <br>
                     <br>
                     <label for="password"></label>
-                    <input type="password" th:placeholder="Password"
+                    <input style="width: 300px" type="password" th:placeholder="Password"
                            id="password" name="password" class="input is-primary is-medium"/>
                     <br>
                     <div align="center" th:if="${param.error}">
                         <br>
-                        <p style="font-size: 20px; color: #FF1C19;">Username or password is invalid!</p>
+                        <p style="font-size: 20px; color: #FF1C19;"><strong>Username or password is invalid!</strong></p>
                     </div>
                     <br>
                     <button class="button is-success" name="Submit" value="Login" type="Submit"

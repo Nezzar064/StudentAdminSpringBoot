@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:insert="fragments/head :: head">
+    <title>Students</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap_4.1.3.css}"
+          th:integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          th:crossorigin="anonymous"/>
+</head>
+
+<body>
+<header id="header">
+    <div th:replace="fragments/navbar.html :: menu"></div>
+</header>
+<div class="container-row">
+    <div class="content">
+        <div class="container">
+            <br>
+            <h2 class="title is-4"><strong>Student List</strong></h2>
+            <br>
+            <div class="columns is-mobile">
+                <div class="column">
+                    <div th:switch="${students}" class="container my-5">
+                        <p class="my-5">
+                            <a href="/students/signup" class="button is-primary is-small">
+                                Add Student</a>
+                        </p>
+                        <br>
+                        <div class="column">
+                            <h2 th:case="null">No Students yet!</h2>
+                            <div th:case="*">
+                                <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Birthdate</th>
+                                        <th>Address</th>
+                                        <th>Phone</th>
+                                        <th>Program</th>
+                                        <th>Edit</th>
+                                        <th>Delete</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="student : ${students}">
+                                        <td th:text="${student.name}"></td>
+                                        <td th:text="${student.birthDate}"></td>
+                                        <td th:text="${student.address}"></td>
+                                        <td th:text="${student.phone}"></td>
+                                        <td th:text="${student.program}"></td>
+                                        <td><a th:href="@{/students/edit/{id}(id=${student.id})}"
+                                               class="button is-primary is-small">Edit</a></td>
+                                        <td><a th:href="@{/students/delete/{id}(id=${student.id})}"
+                                               onclick="confirm_delete()" class="button is-danger is-small">Delete</a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<footer class="footer" th:insert="fragments/footer :: footer">
+</footer>
+</body>
+<script type="text/javascript">
+    function confirm_delete() {
+        return confirm("Delete student?")
+    }
+</script>
+</html>

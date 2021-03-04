@@ -9,6 +9,13 @@ normaluser
 admin
 admin
 
+DB:
+nezzar.educationhost.cloud port 3306
+nyboiwbz_admin
+pw - u know it
+
+remember to put access host! login to web controller
+
 IMPORT STUFF INTO SPRING BOOT
 START FROM CLONING LOGIN TEMPLATE
 - figure out to redirect to admin menu if admin
@@ -16,10 +23,8 @@ START FROM CLONING LOGIN TEMPLATE
 - passwords are already encrypted
 -
 
-StudentService:
-- remember IDCHECKER for DELETING A STUDENT!!
-    - or use spring studentRepository? idk use the idchecker i guess
-- put stuff from studentadmin/studentservice.java here
+Student entity:
+- maybe add email?
 
 StudentController
 - endpoints must be studentadministration/ENDPOINT HERE
@@ -51,6 +56,11 @@ html:
 - table here one/two is pretty nice: https://bulma.io/documentation/elements/content/
 - for help see bulma documentation
 
+use this for GO BACK buttons
+<form th:action="@{/}" method="get">
+    <button class="button is-primary" type="Submit">Go To XXX Page</button>
+</form>
+
 https://bulma.io/documentation/form/general/
 
 Spring security:
@@ -61,10 +71,11 @@ add USER to roles.mysql script / is done
 admin stuff:
  - EVERYTHING ADMIN RELATED MUST BE PUT IN ADMIN FOLDER BECAUSE OF PRIVILEGES
  - implement saveAdminUser / is done
-    - change ADMIN to USER in saveUser AFTER redoing sql script to have USER as well.
+    - change ADMIN to USER in saveUser AFTER redoing sql script to have USER as well. /is done
  - Could try to hide admin menu if user isnt admin, if following link doesnt work, then research:
     https://stackoverflow.com/questions/42409310/how-to-make-menu-tab-invisible-if-the-user-is-not-admin
  - CHANGE ACTIVE STATUS FOR USER
+ - implement USERLIST as student-list is with delete/edit functions.. include active status
 
 
 everything else:

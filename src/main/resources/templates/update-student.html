@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:insert="fragments/head :: head">
+    <title>Update User</title>
+</head>
+
+<body>
+<header id="header">
+    <div th:replace="fragments/navbar.html :: menu"></div>
+</header>
+<div class="container my-5">
+    <h3> Update Student</h3>
+    <div class="card">
+        <div class="card-body">
+            <div class="col-md-8">
+                <form action="#" th:action="@{/students/update/{id}(id=${student.id})}" th:object="${student}" method="post">
+                    <div class="row">
+                        <div class="form-group col-md-8">
+                        <label for="name" class="col-form-label">Name</label> <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="Name"> <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></span>
+                    </div>
+                        <div class="form-group col-md-8">
+                            <label for="birthDate" class="col-form-label">Birthdate</label> <input type="text" th:field="*{birthDate}" class="form-control" id="birthDate" placeholder="Birthdate(XXXX-XX-XX)"> <span th:if="${#fields.hasErrors('birthDate')}" th:errors="*{birthDate}" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <label for="address" class="col-form-label">Address</label> <input type="text" th:field="*{address}" class="form-control" id="Address" placeholder="Address"> <span th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <label for="phone" class="col-form-label">Phone</label> <input type="text" th:field="*{phone}" class="form-control" id="phone" placeholder="Phone Number"> <span th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label for="program" class="col-form-label">Program</label> <input type="text" th:field="*{program}" class="form-control" id="program" placeholder="Program"> <span th:if="${#fields.hasErrors('program')}" th:errors="*{program}" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group col-md-8">
+                            <input type="submit" class="btn btn-primary" value="Update Student">
+                        </div>
+
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="footer" th:insert="fragments/footer :: footer">
+</footer>
+</body>
+
+</html>
