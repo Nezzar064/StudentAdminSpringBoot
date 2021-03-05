@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head th:insert="fragments/head :: head">
     <title>Students</title>
@@ -16,44 +17,45 @@
     <div class="content">
         <div class="container">
             <br>
-            <h2 class="title is-4"><strong>Student List</strong></h2>
+            <h2 class="title is-4"><strong>User List</strong></h2>
             <br>
             <div class="columns is-mobile">
                 <div class="column">
-                    <div th:switch="${students}" class="container my-5">
-                        <p class="my-5">
-                            <a href="/students/signup" class="button is-primary is-small">
-                                Add Student</a>
-                        </p>
+                    <div th:switch="${users}" class="container my-5">
                         <br>
                         <div class="column">
-                            <h2 th:case="null">No Students yet!</h2>
+                            <h2 th:case="null">No Users registered!</h2>
                             <div th:case="*">
                                 <div class="table-responsive">
                                 <table class="table">
                                     <thead>
                                     <tr>
+                                        <th>User ID</th>
+                                        <th>Username</th>
                                         <th>Name</th>
-                                        <th>Birthdate</th>
-                                        <th>Address</th>
-                                        <th>Phone</th>
-                                        <th>Program</th>
+                                        <th>Last name</th>
+                                        <th>Active</th>
                                         <th>Edit</th>
                                         <th>Delete</th>
+                                        <th>Set</th>
+                                        <th>Set</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr th:each="student : ${students}">
-                                        <td th:text="${student.name}"></td>
-                                        <td th:text="${student.birthDate}"></td>
-                                        <td th:text="${student.address}"></td>
-                                        <td th:text="${student.phone}"></td>
-                                        <td th:text="${student.program}"></td>
-                                        <td><a th:href="@{/students/edit/{id}(id=${student.id})}"
+                                    <tr th:each="user : ${users}">
+                                        <td th:text="${user.id}"></td>
+                                        <td th:text="${user.username}"></td>
+                                        <td th:text="${user.name}"></td>
+                                        <td th:text="${user.lastName}"></td>
+                                        <td th:text="${user.active}"></td>
+                                        <td><a th:href="@{/adminFunctions/edit/{id}(id=${user.id})}"
                                                class="button is-primary is-small">Edit</a></td>
-                                        <td><a th:href="@{/students/delete/{id}(id=${student.id})}"
-                                               onclick="confirm_delete()" class="button is-danger is-small">Delete</a>
-                                        </td>
+                                        <td><a th:href="@{/adminFunctions/delete/{id}(id=${user.id})}"
+                                               onclick="confirm_delete_user()" class="button is-danger is-small">Delete</a></td>
+                                        <td><a th:href="@{/adminFunctions/setActive/{id}(id=${user.id})}"
+                                               class="button is-primary is-small">Active</a></td>
+                                        <td><a th:href="@{/adminFunctions/setInactive/{id}(id=${user.id})}"
+                                               onclick="confirm_inactive_user()" class="button is-danger is-small">Inactive</a></td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -73,8 +75,13 @@
 </footer>
 </body>
 <script type="text/javascript">
-    function confirm_delete() {
-        return confirm("Delete student?")
+    function confirm_delete_user() {
+        return confirm("Delete user?")
+    }
+</script>
+<script type="text/javascript">
+    function confirm_inactive_user() {
+        return confirm("Set user to inactive?")
     }
 </script>
 </html>

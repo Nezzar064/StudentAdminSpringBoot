@@ -1,24 +1,36 @@
 package com.example.demo.controllers;
 
+import com.example.demo.models.Student;
 import com.example.demo.models.User;
+import com.example.demo.repositories.UserRepository;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
+@RequestMapping("/adminFunctions/")
 public class AdminController {
 
+    private final UserService userService;
+    private final UserRepository userRepository;
+
     @Autowired
-    private UserService userService;
+    public AdminController(UserService userService, UserRepository userRepository) {
+        this.userService = userService;
+        this.userRepository = userRepository;
+    }
 
     //Admin User Registration
-    @RequestMapping(value="/admin/registration", method = RequestMethod.GET)
+    @GetMapping(value="adminRegistration")
     public ModelAndView registration(){
         ModelAndView modelAndView = new ModelAndView();
         User user = new User();
@@ -27,7 +39,7 @@ public class AdminController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/admin/registration", method = RequestMethod.POST)
+    @PostMapping(value = "addAdmin")
     public ModelAndView createNewAdminUser(@Valid User user, BindingResult bindingResult) {
         ModelAndView modelAndView = new ModelAndView();
         User userExists = userService.findUserByUsername(user.getUsername());
@@ -47,9 +59,8 @@ public class AdminController {
         }
         return modelAndView;
     }
-    //User Registration
 
-    @RequestMapping(value="/admin/userRegistration", method = RequestMethod.GET)
+    @GetMapping(value="userRegistration")
     public ModelAndView userRegistration(){
         ModelAndView modelAndView = new ModelAndView();
         User user = new User();
@@ -58,7 +69,7 @@ public class AdminController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/admin/userRegistration", method = RequestMethod.POST)
+    @PostMapping(value = "addUser")
     public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult) {
         ModelAndView modelAndView = new ModelAndView();
         User userExists = userService.findUserByUsername(user.getUsername());
@@ -78,4 +89,72 @@ public class AdminController {
         }
         return modelAndView;
     }
+
+    @GetMapping("list")
+    public String showUpdateForm(Model model) {
+        model.addAttribute("users", userRepository.findAll());
+        return "/admin/list-of-users";
+    }
+
+    @GetMapping("edit/{id}")
+    public String showUpdateForm(@PathVariable("id") long id, Model model) {
+        try {
+            User user = userRepository.findById(id);
+            model.addAttribute("user", user);
+            return "admin/update-user";
+        } catch (Exception ex) {
+            return "admin/list-of-users";
+        }
+    }
+
+    @PostMapping("update/{id}")
+    public String updateStudent(@PathVariable("id") long id, @Valid User user, BindingResult result, Model model, HttpServletRequest request) {
+        if (result.hasErrors()) {
+            user.setId(id);
+            return "admin/update-user";
+        }
+        if (request.isUserInRole("ADMIN")) {
+            userService.saveAdminUser(user);
+        }
+        else {
+            userService.saveUser(user);
+        }
+        model.addAttribute("users", userRepository.findAll());
+        return "admin/list-of-users";
+    }
+
+    @GetMapping("delete/{id}")
+    public String deleteUser(@PathVariable("id") long id, Model model) {
+        try {
+
+            userService.deleteUser(id);
+            model.addAttribute("users", userRepository.findAll());
+            return "admin/list-of-users";
+        } catch (Exception ex) {
+            return "/admin/home";
+        }
+    }
+
+    @GetMapping("setActive/{id}")
+    public String setActive(@PathVariable("id") long id, Model model) {
+        try {
+            userService.setUserActive(id);
+            model.addAttribute("users", userRepository.findAll());
+            return "admin/list-of-users";
+        } catch (Exception ex) {
+            return "/admin/home";
+        }
+    }
+
+    @GetMapping("setInactive/{id}")
+    public String setInactive(@PathVariable("id") long id, Model model) {
+        try {
+            userService.setUserInactive(id);
+            model.addAttribute("users", userRepository.findAll());
+            return "admin/list-of-users";
+        } catch (Exception ex) {
+            return "/admin/home";
+        }
+    }
+
 }

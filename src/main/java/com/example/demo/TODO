@@ -1,59 +1,27 @@
 //Format: TODO + PRIORITY/NUMBER
 
-Maybe add a forgot password function or something??
-
-USERS:
-normaluser
-normaluser
-
-admin
-admin
+Maybe add a forgot password function or something or changepassword in login screen??
 
 DB:
-nezzar.educationhost.cloud port 3306
-nyboiwbz_admin
-pw - u know it
+- nezzar.educationhost.cloud port 3306
+- nyboiwbz_admin
+- pw - u know it
+- remember to put access host! login to web controller
 
-remember to put access host! login to web controller
 
-IMPORT STUFF INTO SPRING BOOT
-START FROM CLONING LOGIN TEMPLATE
-- figure out to redirect to admin menu if admin
-- otherwise redirect to secretary menu
-- passwords are already encrypted
--
+
+ADD CHANGE PASSWORD FUNCTION:
+https://www.baeldung.com/updating-your-password/
 
 Student entity:
 - maybe add email?
 
-StudentController
-- endpoints must be studentadministration/ENDPOINT HERE
-- import stuff from studentoutput etc, otherwise put it in studentservice or make
-    a studentoutput class as well...
-- help to controller: https://github.com/yashmahes/Student-Management-System-Java-Spring-MVC-Project/blob/master/Students%20Management%20System/src/main/java/com/ci6110/ci6110/controllers/StudentController.java
-
 html:
-- Home.html
-- admin/home.html / is done
-- Registration.html
-- Login.html / is done
-- navbar styling?
-    - add each page to its corresponding menu:
-        - Administration
-        - Viewer
-        - Changer
-        - Admin
-            - delete users / is done, add users / is done, show users
-- addStudent.html https://bulma.io/documentation/form/input/
-- deleteStudent.html
-- one html for each studentOutput, put in its own folder, contains tables for each
-- do all the annoying CSS work
+- list-of-users.html:
+    - find a way to display role as well. currently it only displays array, maybe ask pete?
 - remember to change page titles so they correspond to what page you are on
-- maybe add fragment for head with viewport, navbar.css and container-row.css? / is done
-- 404 error page, error.html / is done
 - Navbar is collapsed on mobile, fix
 - Navbar doesnt scroll with page, fix
-- table here one/two is pretty nice: https://bulma.io/documentation/elements/content/
 - for help see bulma documentation
 
 use this for GO BACK buttons
@@ -66,27 +34,13 @@ https://bulma.io/documentation/form/general/
 Spring security:
 - redirect user to admin page if admin, else to user page
 
-add USER to roles.mysql script / is done
-
 admin stuff:
  - EVERYTHING ADMIN RELATED MUST BE PUT IN ADMIN FOLDER BECAUSE OF PRIVILEGES
- - implement saveAdminUser / is done
-    - change ADMIN to USER in saveUser AFTER redoing sql script to have USER as well. /is done
- - Could try to hide admin menu if user isnt admin, if following link doesnt work, then research:
-    https://stackoverflow.com/questions/42409310/how-to-make-menu-tab-invisible-if-the-user-is-not-admin
- - CHANGE ACTIVE STATUS FOR USER
- - implement USERLIST as student-list is with delete/edit functions.. include active status
 
+list-of-users.html:
+- find a way to display role as well. currently it only displays array, maybe ask pete?
 
 everything else:
  evt contact me m. messagesystem, som blir gemt i databasen og kan vises i webapp i sin egen menu?
  evt add h2 support?
 
- ENDPOINTS:
- admin:
- /admin/registration
- /admin/userRegistration
-/admin/home
-
-/home
-/login

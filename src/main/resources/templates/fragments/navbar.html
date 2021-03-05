@@ -1,5 +1,5 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" th:href="@{/css/navbar.css}"/>
@@ -37,25 +37,19 @@
 
                 </div>
 
-                <div class="navbar-item has-dropdown is-hoverable">
+                <div sec:authorize="hasAuthority('ADMIN')" class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link" href="/admin/home">
                         Admin Menu
                     </a>
                     <div class="navbar-dropdown is-boxed">
-                        <a class="navbar-item" href="/admin/userRegistration">
+                        <a class="navbar-item" href="/adminFunctions/userRegistration">
                             Add User
                         </a>
-                        <a class="navbar-item" href="/admin/registration">
+                        <a class="navbar-item" href="/adminFunctions/adminRegistration">
                             Add Admin User
                         </a>
-                        <a class="navbar-item" href="#">
-                            Submenu 3
-                        </a>
-                        <a class="navbar-item" href="#">
-                            Submenu 4
-                        </a>
-                        <a class="navbar-item" href="#">
-                            Submenu 5
+                        <a class="navbar-item" href="/adminFunctions/list">
+                            List Users
                         </a>
                     </div>
                 </div>
