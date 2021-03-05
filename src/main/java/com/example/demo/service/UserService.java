@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -31,6 +32,14 @@ public class UserService {
 
     public User findUserByUsername(String userName){
         return userRepository.findByUsername(userName);
+    }
+
+    public List<User> getAll() {
+        return userRepository.findAll();
+    }
+
+    public User findById(long id) {
+        return userRepository.findById(id);
     }
 
     public User saveUser(User user) {

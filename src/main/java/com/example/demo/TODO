@@ -9,12 +9,17 @@ DB:
 - remember to put access host! login to web controller
 
 
+At some point, add a student interface as well for students. maybe also teachers
+- means setting up tasks/classes as well
+- attendance table for classes? db relationship
+- everything else related to it
 
 ADD CHANGE PASSWORD FUNCTION:
 https://www.baeldung.com/updating-your-password/
 
 Student entity:
 - maybe add email?
+- fix issue if u add a duplicate entry, maybe binding result? non unique?
 
 html:
 - list-of-users.html:
@@ -23,6 +28,10 @@ html:
 - Navbar is collapsed on mobile, fix
 - Navbar doesnt scroll with page, fix
 - for help see bulma documentation
+- evt brug https://bulma.io/documentation/form/general/ <p class="help is-danger>" for invalid username
+    - add icons as well for input boxes
+    - maybe make add-student boxes larger?
+- fix form resize bug when adding
 
 use this for GO BACK buttons
 <form th:action="@{/}" method="get">

@@ -42,8 +42,9 @@ public class StudentController {
             return "add-student";
         }
         model.addAttribute("successMessage", "Student has been registered successfully!");
+        model.addAttribute("student", student);
         studentRepository.save(student);
-        return "add-student";
+        return "list-of-students";
     }
 
     @GetMapping("edit/{id}")
@@ -62,6 +63,7 @@ public class StudentController {
         }
 
         studentRepository.save(student);
+        model.addAttribute("successMessage", "Student has been updated successfully!");
         model.addAttribute("students", studentRepository.findAll());
         return "list-of-students";
     }

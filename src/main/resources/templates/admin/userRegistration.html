@@ -11,7 +11,6 @@
 <div class="container-row">
     <div class="content">
         <div class="container">
-            <br>
             <h2 class="title is-4"><strong>User Registration</strong></h2>
             <br>
             <div class="columns is-mobile">
@@ -22,7 +21,7 @@
                         <div class="form-group">
                             <div class="column">
                                 <label for="name" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
-                                       class="validation-message"></label>
+                                       class="label"></label>
                                 <strong>
                                     <input style="color:black" type="text" th:field="*{name}" placeholder="Name"
                                            class="input is-normal" id="name"/> </strong>
@@ -31,7 +30,7 @@
                         <div class="form-group">
                             <div class="column">
                                 <label for="lastName" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
-                                       class="validation-message"></label>
+                                       class="label"></label>
                                 <input type="text" th:field="*{lastName}"
                                        placeholder="Last Name" class="input is-primary is-normal" id="lastName"/>
                             </div>
@@ -42,7 +41,7 @@
                                        class="input is-primary is-normal"/> <label for="username"
                                                                                    th:if="${#fields.hasErrors('username')}"
                                                                                    th:errors="*{username}"
-                                                                                   class="validation-message"></label>
+                                                                                   class="label"></label>
                             </div>
                         </div>
                         <div class="form-group">
@@ -51,7 +50,7 @@
                                        placeholder="Password" class="input is-primary is-normal"/> <label for="password"
                                                                                                           th:if="${#fields.hasErrors('password')}"
                                                                                                           th:errors="*{password}"
-                                                                                                          class="validation-message"></label>
+                                                                                                          class="label"></label>
                             </div>
                         </div>
                         <div class="form-group">
@@ -59,10 +58,8 @@
                                 <button type="submit" class="button is-success">Register User</button>
                             </div>
                         </div>
+                        <h2 class="title is-4"><span class="text-success" th:utext="${successMessage}"></span></h2>
                     </form>
-                </div>
-                <div class="col-md-6 col-md-offset-3">
-                    <h2><span class="text-success" th:utext="${successMessage}"></span></h2>
                 </div>
             </div>
         </div>

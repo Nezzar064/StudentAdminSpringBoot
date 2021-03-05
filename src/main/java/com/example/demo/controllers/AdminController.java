@@ -1,11 +1,8 @@
 package com.example.demo.controllers;
 
-import com.example.demo.models.Student;
 import com.example.demo.models.User;
-import com.example.demo.repositories.UserRepository;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,19 +11,16 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import java.util.List;
 
 @Controller
 @RequestMapping("/adminFunctions/")
 public class AdminController {
 
     private final UserService userService;
-    private final UserRepository userRepository;
 
     @Autowired
-    public AdminController(UserService userService, UserRepository userRepository) {
+    public AdminController(UserService userService) {
         this.userService = userService;
-        this.userRepository = userRepository;
     }
 
     //Admin User Registration
@@ -54,7 +48,7 @@ public class AdminController {
             userService.saveAdminUser(user);
             modelAndView.addObject("successMessage", "Admin user has been registered successfully!");
             modelAndView.addObject("user", new User());
-            modelAndView.setViewName("admin/registration");
+            modelAndView.setViewName("admin/list-of-users");
 
         }
         return modelAndView;
@@ -84,7 +78,7 @@ public class AdminController {
             userService.saveUser(user);
             modelAndView.addObject("successMessage", "User has been registered successfully!");
             modelAndView.addObject("user", new User());
-            modelAndView.setViewName("admin/userRegistration");
+            modelAndView.setViewName("admin/list-of-users");
 
         }
         return modelAndView;
@@ -92,14 +86,14 @@ public class AdminController {
 
     @GetMapping("list")
     public String showUpdateForm(Model model) {
-        model.addAttribute("users", userRepository.findAll());
+        model.addAttribute("users", userService.getAll());
         return "/admin/list-of-users";
     }
 
     @GetMapping("edit/{id}")
     public String showUpdateForm(@PathVariable("id") long id, Model model) {
         try {
-            User user = userRepository.findById(id);
+            User user = userService.findById(id);
             model.addAttribute("user", user);
             return "admin/update-user";
         } catch (Exception ex) {
@@ -119,7 +113,8 @@ public class AdminController {
         else {
             userService.saveUser(user);
         }
-        model.addAttribute("users", userRepository.findAll());
+        model.addAttribute("successMessage", "User has been updated successfully!");
+        model.addAttribute("users", userService.getAll());
         return "admin/list-of-users";
     }
 
@@ -128,7 +123,7 @@ public class AdminController {
         try {
 
             userService.deleteUser(id);
-            model.addAttribute("users", userRepository.findAll());
+            model.addAttribute("users", userService.getAll());
             return "admin/list-of-users";
         } catch (Exception ex) {
             return "/admin/home";
@@ -139,7 +134,7 @@ public class AdminController {
     public String setActive(@PathVariable("id") long id, Model model) {
         try {
             userService.setUserActive(id);
-            model.addAttribute("users", userRepository.findAll());
+            model.addAttribute("users", userService.getAll());
             return "admin/list-of-users";
         } catch (Exception ex) {
             return "/admin/home";
@@ -150,7 +145,7 @@ public class AdminController {
     public String setInactive(@PathVariable("id") long id, Model model) {
         try {
             userService.setUserInactive(id);
-            model.addAttribute("users", userRepository.findAll());
+            model.addAttribute("users", userService.getAll());
             return "admin/list-of-users";
         } catch (Exception ex) {
             return "/admin/home";
