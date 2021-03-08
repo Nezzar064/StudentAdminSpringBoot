@@ -17,6 +17,14 @@ At some point, add a student interface as well for students. maybe also teachers
 ADD CHANGE PASSWORD FUNCTION:
 https://www.baeldung.com/updating-your-password/
 
+spring:
+- add dashboard to /home
+- add /user/ mapping
+
+THYMELEAF RADIO BUTTON:
+ <input type="radio" th:value="false" th:field="*{posts[__${itemStat.index}__].publicPost}"
+                                                    th:checked="*{posts[__${itemStat.index}__].publicPost}">
+
 Student entity:
 - maybe add email?
 - fix issue if u add a duplicate entry, maybe binding result? non unique?
