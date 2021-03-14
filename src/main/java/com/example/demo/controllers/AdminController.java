@@ -48,7 +48,7 @@ public class AdminController {
             userService.saveAdminUser(user);
             modelAndView.addObject("successMessage", "Admin user has been registered successfully!");
             modelAndView.addObject("user", new User());
-            modelAndView.setViewName("admin/list-of-users");
+            modelAndView.setViewName("redirect:/adminFunctions/list");
 
         }
         return modelAndView;
@@ -78,7 +78,7 @@ public class AdminController {
             userService.saveUser(user);
             modelAndView.addObject("successMessage", "User has been registered successfully!");
             modelAndView.addObject("user", new User());
-            modelAndView.setViewName("admin/list-of-users");
+            modelAndView.setViewName("redirect:/adminFunctions/list");
 
         }
         return modelAndView;
@@ -97,7 +97,7 @@ public class AdminController {
             model.addAttribute("user", user);
             return "admin/update-user";
         } catch (Exception ex) {
-            return "admin/list-of-users";
+            return "redirect:/adminFunctions/list";
         }
     }
 
@@ -115,7 +115,7 @@ public class AdminController {
         }
         model.addAttribute("successMessage", "User has been updated successfully!");
         model.addAttribute("users", userService.getAll());
-        return "admin/list-of-users";
+        return "redirect:/adminFunctions/list";
     }
 
     @GetMapping("delete/{id}")
@@ -124,7 +124,7 @@ public class AdminController {
 
             userService.deleteUser(id);
             model.addAttribute("users", userService.getAll());
-            return "admin/list-of-users";
+            return "redirect:/adminFunctions/list";
         } catch (Exception ex) {
             return "/admin/home";
         }
@@ -135,7 +135,7 @@ public class AdminController {
         try {
             userService.setUserActive(id);
             model.addAttribute("users", userService.getAll());
-            return "admin/list-of-users";
+            return "redirect:/adminFunctions/list";
         } catch (Exception ex) {
             return "/admin/home";
         }
@@ -146,7 +146,7 @@ public class AdminController {
         try {
             userService.setUserInactive(id);
             model.addAttribute("users", userService.getAll());
-            return "admin/list-of-users";
+            return "redirect:/adminFunctions/list";
         } catch (Exception ex) {
             return "/admin/home";
         }

@@ -2,6 +2,7 @@ package com.example.demo.controllers;
 
 import com.example.demo.models.Student;
 import com.example.demo.repositories.StudentRepository;
+import com.example.demo.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,12 +18,8 @@ import javax.validation.Valid;
 @RequestMapping("/students/")
 public class StudentController {
 
-    private final StudentRepository studentRepository;
-
     @Autowired
-    public StudentController(StudentRepository studentRepository) {
-        this.studentRepository = studentRepository;
-    }
+    private StudentService studentService;
 
 
     @GetMapping("signup")
@@ -32,7 +29,7 @@ public class StudentController {
 
     @GetMapping("list")
     public String showUpdateForm(Model model) {
-        model.addAttribute("students", studentRepository.findAll());
+        model.addAttribute("students", studentService.findAll());
         return "list-of-students";
     }
 
@@ -43,14 +40,13 @@ public class StudentController {
         }
         model.addAttribute("successMessage", "Student has been registered successfully!");
         model.addAttribute("student", student);
-        studentRepository.save(student);
-        return "list-of-students";
+        studentService.save(student);
+        return "redirect:/students/list";
     }
 
     @GetMapping("edit/{id}")
     public String showUpdateForm(@PathVariable("id") long id, Model model) {
-        Student student = studentRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid student id:" + id));
+        Student student = studentService.findStudentById(id);
         model.addAttribute("student", student);
         return "update-student";
     }
@@ -62,19 +58,18 @@ public class StudentController {
             return "update-student";
         }
 
-        studentRepository.save(student);
+        studentService.save(student);
         model.addAttribute("successMessage", "Student has been updated successfully!");
-        model.addAttribute("students", studentRepository.findAll());
-        return "list-of-students";
+        model.addAttribute("students", studentService.findAll());
+        return "redirect:/students/list";
     }
 
     @GetMapping("delete/{id}")
     public String deleteStudent(@PathVariable("id") long id, Model model) {
-        Student student = studentRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid student id:" + id));
-        studentRepository.delete(student);
-        model.addAttribute("students", studentRepository.findAll());
-        return "list-of-students";
+        Student student = studentService.findStudentById(id);
+        studentService.delete(student);
+        model.addAttribute("students", studentService.findAll());
+        return "redirect:/students/list";
     }
 
 }

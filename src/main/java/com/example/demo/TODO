@@ -21,6 +21,19 @@ spring:
 - add dashboard to /home
 - add /user/ mapping
 
+add extra layer(service class) for StudentController.
+- add angular/jscript or react
+- maybe move Authentication auth = SecurityContextHolder.getContext().getAuthentication(); to service
+
+StudentService:
+- is                 .orElseThrow(() -> new IllegalArgumentException("Invalid student id:" + id));
+in the right place?
+
+ADD CACHE!
+https://www.baeldung.com/spring-cache-tutorial
+https://www.javatpoint.com/spring-boot-caching
+https://www.ehcache.org/
+
 THYMELEAF RADIO BUTTON:
  <input type="radio" th:value="false" th:field="*{posts[__${itemStat.index}__].publicPost}"
                                                     th:checked="*{posts[__${itemStat.index}__].publicPost}">

@@ -28,9 +28,8 @@ public class LoginController {
     @RequestMapping(value="/admin/home", method = RequestMethod.GET)
     public ModelAndView home(){
         ModelAndView modelAndView = new ModelAndView();
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        User user = userService.findUserByUsername(auth.getName());
-        modelAndView.addObject("userName", "Greetings " + user.getUsername() + "/" + user.getName() + " " + user.getLastName());
+        userService.findUserByUsernameWithRole();
+        modelAndView.addObject("userName", "Greetings " + userService.findUserByUsernameWithRole().getUsername() + "/" + userService.findUserByUsernameWithRole().getName() + " " + userService.findUserByUsernameWithRole().getLastName());
         modelAndView.addObject("adminMessage","Content Available Only for Users with Admin Role");
         modelAndView.setViewName("admin/home");
         return modelAndView;
@@ -39,9 +38,8 @@ public class LoginController {
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public ModelAndView userHome() {
         ModelAndView modelAndView = new ModelAndView();
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        User user = userService.findUserByUsername(auth.getName());
-        modelAndView.addObject("homeUserName", "Greetings " + user.getUsername() + "/" + user.getName() + " " + user.getLastName());
+        userService.findUserByUsernameWithRole();
+        modelAndView.addObject("homeUserName", "Greetings " + userService.findUserByUsernameWithRole().getUsername() + "/" + userService.findUserByUsernameWithRole().getName() + " " + userService.findUserByUsernameWithRole().getLastName());
         modelAndView.setViewName("/home");
         return modelAndView;
     }

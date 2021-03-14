@@ -34,6 +34,11 @@ public class UserService {
         return userRepository.findByUsername(userName);
     }
 
+    public User findUserByUsernameWithRole() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        return findUserByUsername(auth.getName());
+    }
+
     public List<User> getAll() {
         return userRepository.findAll();
     }
