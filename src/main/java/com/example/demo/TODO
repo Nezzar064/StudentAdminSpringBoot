@@ -38,6 +38,7 @@ THYMELEAF RADIO BUTTON:
 Student entity:
 - maybe add email?
 - fix issue if u add a duplicate entry, maybe binding result? non unique?
+- make first and last name seperate, then join them after
 
 html:
 - goback buttons
