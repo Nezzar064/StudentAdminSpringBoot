@@ -40,6 +40,7 @@ Student entity:
 - fix issue if u add a duplicate entry, maybe binding result? non unique?
 
 html:
+- goback buttons
 - list-of-users.html:
     - find a way to display role as well. currently it only displays array, maybe ask pete?
 - remember to change page titles so they correspond to what page you are on
